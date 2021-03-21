@@ -1,10 +1,5 @@
 package com.desafiojogodavelha;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
-
 public class JogoDaVelha
 {
     private final char[][] tabuleiro;
@@ -45,16 +40,11 @@ public class JogoDaVelha
 
     public boolean verificaGanhador (char marcador)
     {
-        return (tabuleiro[0][0] == marcador && tabuleiro[0][1] == marcador && tabuleiro[0][2] == marcador) || // verifica primeira linha
-                (tabuleiro[1][0] == marcador && tabuleiro[1][1] == marcador && tabuleiro[1][2] == marcador) || // verifica segunda linha
-                (tabuleiro[2][0] == marcador && tabuleiro[2][1] == marcador && tabuleiro[2][2] == marcador) || // verifica terceira linha
-
-                (tabuleiro[0][0] == marcador && tabuleiro[1][0] == marcador && tabuleiro[2][0] == marcador) || // verifica primeira coluna
-                (tabuleiro[0][1] == marcador && tabuleiro[1][1] == marcador && tabuleiro[2][1] == marcador) || // verifica segunda coluna
-                (tabuleiro[0][2] == marcador && tabuleiro[1][2] == marcador && tabuleiro[2][2] == marcador) ||  // verifica terceira coluna
-
-                (tabuleiro[0][0] == marcador && tabuleiro[1][1] == marcador && tabuleiro[2][2] == marcador) ||  // verifica diagonal principal
-                (tabuleiro[0][2] == marcador && tabuleiro[1][1] == marcador && tabuleiro[2][0] == marcador); //  verifica diagonal secundária
+        var helper = new JogoDaVelhaHelper(tabuleiro);
+        return helper.verificarGanhadorLinha(marcador) ||
+                helper.verificarGanhadorColuna(marcador) ||
+                helper.verificarGanhadorDiagonal(marcador) ||
+                helper.verificarGanhadorDiagonalSecundaria(marcador);
     }
 
     public void setTabuleiro() {
@@ -84,11 +74,22 @@ public class JogoDaVelha
 
     public int[] escolhaDoJogador()
     {
-        int[] posicaosValida = new int[] { 0, 1, 3};
+        //int[] posicoes = posicoesValidas();
 
         int linha = Teclado.leInt("Escolha a linha: (0-3)");
         int coluna = Teclado.leInt("Escolha a coluna: (0-3)");
 
         return new int[] { linha, coluna};
     }
+
+    public int[] posicoesValidas()
+    {
+        int[] posicaos = new int[tabuleiro.length];
+        for (int i = 0; i < tabuleiro.length; i++) {
+            posicaos[i] = i;
+        }
+        return posicaos;
+    }
+
+
 }

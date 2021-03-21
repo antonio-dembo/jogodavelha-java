@@ -67,7 +67,7 @@ public class Principal
 
                     if ( jogoDaVelha.verificaGanhador(jogador2Marker))
                     {
-                        jogador1.setPontos(jogador2.getPontos() + 10);
+                        jogador2.setPontos(jogador2.getPontos() + 10);
                         isGameOn = false;
                     } else {
                         if(jogoDaVelha.isTabuleiroCheio())
@@ -90,13 +90,13 @@ public class Principal
                 if ( jogador1.getPontos() > jogador2.getPontos())
                 {
                     System.out.println(jogoDaVelha);
-                    System.out.println(jogador1);
                     System.out.println(jogador1.getNome() + " é o(a) vencedor(a) !!!");
+                    System.out.println(jogador1);
                 }
                 else if ( jogador2.getPontos() > jogador1.getPontos()){
                     System.out.println(jogoDaVelha);
-                    System.out.println(jogador2);
                     System.out.println(jogador2.getNome() + " é o(a) vencedor(a) !!!");
+                    System.out.println(jogador2);
                 }
                 else{
                     System.out.println("O Jogo terminou empatado!!");

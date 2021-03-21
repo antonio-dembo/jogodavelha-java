@@ -9,7 +9,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JogoDaVelhaTest {
+public class JogoDaVelhaTest {
 
     @Test
     public void jogoDaVelha_RealizaJogada_RetornaTrue () {
@@ -31,22 +31,15 @@ class JogoDaVelhaTest {
         int contador = 0;
 
         boolean isVencedor = false;
-        var linhaVencedora = new boolean[tabuleiro.length];
 
-        for (int l = 0; l < tabuleiro.length; l++)
-        {
-            for (int c = 0; c < tabuleiro.length; c++)
-            {
-                if(tabuleiro[l][c] == marcador2)
-                {
-                    linhaVencedora[c] = true;
+        for (char[] chars : tabuleiro) {
+            for (int c = 0; c < tabuleiro.length; c++) {
+                if (chars[c] == marcador2) {
                     contador++;
                 }
-
             }
 
-            if(contador == linhaVencedora.length)
-            {
+            if (contador == tabuleiro.length) {
                 isVencedor = true;
                 break;
             }
@@ -68,20 +61,16 @@ class JogoDaVelhaTest {
         int contador = 0;
 
         boolean isVencedor = false;
-        var colunaVencedor = new boolean[tabuleiro.length];
 
         for (int l = 0; l < tabuleiro.length; l++)
         {
-            for (int c = 0; c < tabuleiro.length; c++)
-            {
-                if(tabuleiro[c][l] == marcador2)
-                {
-                    colunaVencedor[l] = true;
+            for (char[] chars : tabuleiro) {
+                if (chars[l] == marcador2) {
                     contador++;
                 }
             }
 
-            if(contador == colunaVencedor.length)
+            if(contador == tabuleiro.length)
             {
                 isVencedor = true;
                 break;
@@ -103,7 +92,6 @@ class JogoDaVelhaTest {
         int contador = 0;
 
         boolean isVencedor = false;
-        var diagonalVencedora = new boolean[tabuleiro.length];
 
         for (int l = 0; l < tabuleiro.length; l++)
         {
@@ -113,18 +101,16 @@ class JogoDaVelhaTest {
                 {
                     if(tabuleiro[l][c] == marcador2)
                     {
-                        diagonalVencedora[l] = true;
                         contador++;
                     }
                 }
             }
 
-            if(contador == diagonalVencedora.length)
+            if(contador == tabuleiro.length)
             {
                 isVencedor = true;
                 break;
             }
-            //contador = 0;
         }
 
         assertTrue(isVencedor);
@@ -142,7 +128,6 @@ class JogoDaVelhaTest {
         int col;
 
         boolean isVencedor = false;
-        var diagonalSecundariaVencedora = new boolean[tabuleiro.length];
 
         for (int l = 0; l < tabuleiro.length; l++)
         {
@@ -151,13 +136,12 @@ class JogoDaVelhaTest {
             {
                 if( tabuleiro[l][col] == marcador2)
                 {
-                    diagonalSecundariaVencedora[l] = true;
                     contador++;
                     break;
                 }
             }
 
-            if(contador == diagonalSecundariaVencedora.length)
+            if(contador == tabuleiro.length)
             {
                 isVencedor = true;
                 break;
@@ -171,8 +155,8 @@ class JogoDaVelhaTest {
     public char[][] mockTabuleiro ()
     {
         return new char[][] {
+                {'O', 'O','O'},
                 {'X', 'O','O'},
-                {'X', 'O','X'},
                 {'O', 'y','O'}};
     }
 

@@ -19,9 +19,6 @@ public class Jogador {
 
     @Override
     public String toString() {
-        return "Jogador{" +
-                 "nome='" + nome + '\'' +
-                ", pontos=" + pontos +
-                '}';
+        return "Total de Pontos: " + pontos;
     }
 }
