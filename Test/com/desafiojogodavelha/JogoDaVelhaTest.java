@@ -21,14 +21,13 @@ class JogoDaVelhaTest {
     }
 
     @Test
-    public void jogoDaVelha_VerificaSeTemGanhador_RetornaTrue ()
+    public void jogoDaVelha_VerificaGanhadorNaLinha_RetornaTrue ()
     {
         //Arrange
         var tabuleiro = mockTabuleiro();
 
         char marcador1 = 'X';
         char marcador2 = 'O';
-        boolean state = false;
         int contador = 0;
 
         boolean isVencedor = false;
@@ -52,22 +51,54 @@ class JogoDaVelhaTest {
                 break;
             }
             contador = 0;
-
         }
 
         assertTrue(isVencedor);
-
     }
 
+
+    @Test
+    public void jogoDaVelha_VerificaGanhadorNaColuna_RetornaTrue ()
+    {
+        //Arrange
+        var tabuleiro = mockTabuleiro();
+
+        char marcador1 = 'X';
+        char marcador2 = 'O';
+        int contador = 0;
+
+        boolean isVencedor = false;
+        var colunaVencedor = new boolean[tabuleiro.length];
+
+        for (int l = 0; l < tabuleiro.length; l++)
+        {
+            for (int c = 0; c < tabuleiro.length; c++)
+            {
+                if(tabuleiro[c][l] == marcador2)
+                {
+                    colunaVencedor[l] = true;
+                    contador++;
+                }
+
+            }
+
+            if(contador == colunaVencedor.length)
+            {
+                isVencedor = true;
+                break;
+            }
+            contador = 0;
+        }
+
+        assertTrue(isVencedor);
+    }
 
     public char[][] mockTabuleiro ()
     {
         return new char[][] {
                 {'X', 'O','O'},
                 {'O', 'y','O'},
-                {'O', 'O','O'}};
+                {'O', 'y','O'}};
     }
-
-
 
 }
