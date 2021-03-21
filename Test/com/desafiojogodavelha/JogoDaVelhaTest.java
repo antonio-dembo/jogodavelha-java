@@ -4,6 +4,8 @@ import jdk.jshell.spi.ExecutionControl;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,26 +28,30 @@ class JogoDaVelhaTest {
 
         char marcador1 = 'X';
         char marcador2 = 'O';
+        boolean state = false;
+        int contador = 0;
 
         boolean isVencedor = false;
-        var verificaLinha = new boolean[tabuleiro.length];
+        var linhaVencedora = new boolean[tabuleiro.length];
 
         for (int l = 0; l < tabuleiro.length; l++)
         {
-            for (int c = 0; c < tabuleiro.length; c++) {
-                verificaLinha[c] = tabuleiro[l][c] == marcador2;
-            }
-
-
-            for (int i = 0; i < verificaLinha.length ; i++)
+            for (int c = 0; c < tabuleiro.length; c++)
             {
-                if(verificaLinha[i]) {
-                    if (verificaLinha.length - 1 == i) {
-                        isVencedor = true;
-                        break;
-                    }
+                if(tabuleiro[l][c] == marcador2)
+                {
+                    linhaVencedora[c] = true;
+                    contador++;
                 }
+
             }
+
+            if(contador == linhaVencedora.length)
+            {
+                isVencedor = true;
+                break;
+            }
+            contador = 0;
 
         }
 
@@ -57,8 +63,8 @@ class JogoDaVelhaTest {
     public char[][] mockTabuleiro ()
     {
         return new char[][] {
-                {'X', 'X','X'},
-                {'Y', 'O','Y'},
+                {'X', 'O','O'},
+                {'O', 'y','O'},
                 {'O', 'O','O'}};
     }
 

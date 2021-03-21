@@ -48,9 +48,11 @@ public class JogoDaVelha
         return (tabuleiro[0][0] == marcador && tabuleiro[0][1] == marcador && tabuleiro[0][2] == marcador) || // verifica primeira linha
                 (tabuleiro[1][0] == marcador && tabuleiro[1][1] == marcador && tabuleiro[1][2] == marcador) || // verifica segunda linha
                 (tabuleiro[2][0] == marcador && tabuleiro[2][1] == marcador && tabuleiro[2][2] == marcador) || // verifica terceira linha
+
                 (tabuleiro[0][0] == marcador && tabuleiro[1][0] == marcador && tabuleiro[2][0] == marcador) || // verifica primeira coluna
                 (tabuleiro[0][1] == marcador && tabuleiro[1][1] == marcador && tabuleiro[2][1] == marcador) || // verifica segunda coluna
                 (tabuleiro[0][2] == marcador && tabuleiro[1][2] == marcador && tabuleiro[2][2] == marcador) ||  // verifica terceira coluna
+
                 (tabuleiro[0][0] == marcador && tabuleiro[1][1] == marcador && tabuleiro[2][2] == marcador) ||  // verifica diagonal principal
                 (tabuleiro[0][2] == marcador && tabuleiro[1][1] == marcador && tabuleiro[2][0] == marcador); //  verifica diagonal secundária
     }
