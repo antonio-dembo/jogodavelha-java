@@ -79,7 +79,6 @@ class JogoDaVelhaTest {
                     colunaVencedor[l] = true;
                     contador++;
                 }
-
             }
 
             if(contador == colunaVencedor.length)
@@ -93,11 +92,49 @@ class JogoDaVelhaTest {
         assertTrue(isVencedor);
     }
 
+    @Test
+    public void jogoDaVelha_VerificaGanhadorDiagonal_RetornaTrue ()
+    {
+        //Arrange
+        var tabuleiro = mockTabuleiro();
+
+        char marcador1 = 'X';
+        char marcador2 = 'O';
+        int contador = 0;
+
+        boolean isVencedor = false;
+        var diagonalVencedora = new boolean[tabuleiro.length];
+
+        for (int l = 0; l < tabuleiro.length; l++)
+        {
+            for (int c = 0; c < tabuleiro.length; c++)
+            {
+                if( l == c)
+                {
+                    if(tabuleiro[l][c] == marcador2)
+                    {
+                        diagonalVencedora[l] = true;
+                        contador++;
+                    }
+                }
+            }
+
+            if(contador == diagonalVencedora.length)
+            {
+                isVencedor = true;
+                break;
+            }
+            //contador = 0;
+        }
+
+        assertTrue(isVencedor);
+    }
+
     public char[][] mockTabuleiro ()
     {
         return new char[][] {
+                {'O', 'O','X'},
                 {'X', 'O','O'},
-                {'O', 'y','O'},
                 {'O', 'y','O'}};
     }
 
