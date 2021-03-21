@@ -130,11 +130,49 @@ class JogoDaVelhaTest {
         assertTrue(isVencedor);
     }
 
+    @Test
+    public void jogoDaVelha_VerificaGanhadorDiagonalSecundaria_RetornaTrue ()
+    {
+        //Arrange
+        var tabuleiro = mockTabuleiro();
+
+        char marcador1 = 'X';
+        char marcador2 = 'O';
+        int contador = 0;
+        int col;
+
+        boolean isVencedor = false;
+        var diagonalSecundariaVencedora = new boolean[tabuleiro.length];
+
+        for (int l = 0; l < tabuleiro.length; l++)
+        {
+            col = tabuleiro.length - (l+1);
+            for ( int c = 0; c < tabuleiro.length ; c++)
+            {
+                if( tabuleiro[l][col] == marcador2)
+                {
+                    diagonalSecundariaVencedora[l] = true;
+                    contador++;
+                    break;
+                }
+            }
+
+            if(contador == diagonalSecundariaVencedora.length)
+            {
+                isVencedor = true;
+                break;
+            }
+
+        }
+
+        assertTrue(isVencedor);
+    }
+
     public char[][] mockTabuleiro ()
     {
         return new char[][] {
-                {'O', 'O','X'},
                 {'X', 'O','O'},
+                {'X', 'O','X'},
                 {'O', 'y','O'}};
     }
 
